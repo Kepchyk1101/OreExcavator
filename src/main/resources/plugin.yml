@@ -1,0 +1,21 @@
+name: OreExcavator
+version: '${project.version}'
+main: me.kepchyk1101.oreexcavator.OreExcavator
+api-version: '1.16'
+authors: [Kepchyk1101]
+description: Allows you to dig up an entire vein of ore in one fell swoop!
+website: https://github.com/Kepchyk1101
+softdepend: [WorldGuard]
+
+commands:
+  oreexcavator:
+    aliases:
+      - oe
+
+permissions:
+  oe.give:
+    description: 'Allows you to issue enchanted plugin books'
+    default: op
+  oe.reload:
+    description: 'Allows you to reload the plugin configuration'
+    default: op

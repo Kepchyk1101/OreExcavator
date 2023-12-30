@@ -1,0 +1,27 @@
+General:
+
+  # 'SINGLE' - Only the same ore will be mined
+  # 'MULTI' - All nearby ores will be excavated
+  Mode: 'SINGLE'
+
+  # Maximum number of ores to be mined at a time
+  Limit: 100
+
+  # With what delay will all the ores in the vein break?
+  # Creates beautiful animation
+  # The value is in milliseconds. 0 - disable delay
+  DiggingDelay: 100
+
+  # Should particles be created over each broken ore block?
+  # Creates beautiful animation
+  Particles: true
+
+  # The name of the enchantment, displayed in the description of the book and item with this enchantment
+  EnchantmentName: '&7Ore Excavator'
+
+Messages:
+  OnlyPlayer: "&cOnly the player can use this command"
+  NoPerms: "&cYou do not have permission to use this command"
+  PlayerNotFound: '&cThe player you specified was not found or is offline'
+  ConfigReloaded: '&aConfig reloaded successfully'
+  CommandSyntax: '&fUsage: &6/oe give &for &6/oe give <player> &for &6/oe reload'
