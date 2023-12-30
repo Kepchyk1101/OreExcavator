@@ -12,6 +12,7 @@ import me.kepchyk1101.oreexcavator.listener.AnvilListener;
 import me.kepchyk1101.oreexcavator.service.CustomBooksGiver;
 import me.kepchyk1101.oreexcavator.service.OreExcavatorService;
 import me.kepchyk1101.oreexcavator.util.ChatUtil;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -60,6 +61,8 @@ public final class OreExcavator extends JavaPlugin {
 
         pluginManager.registerEvents((Listener) oreExcavationEnch, this);
         pluginManager.registerEvents(new AnvilListener(this), this);
+
+        new Metrics(this, 114201);
 
     }
 
