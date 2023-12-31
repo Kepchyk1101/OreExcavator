@@ -62,7 +62,7 @@ public final class OreExcavator extends JavaPlugin {
         pluginManager.registerEvents((Listener) oreExcavationEnch, this);
         pluginManager.registerEvents(new AnvilListener(this), this);
 
-        new Metrics(this, 114201);
+        new Metrics(this, 20614);
 
     }
 
