@@ -19,8 +19,11 @@ General:
   # The name of the enchantment, displayed in the description of the book and item with this enchantment
   EnchantmentName: '&7Ore Excavator'
 
+  # If you want to set your own texture for enchantment, specify its custom model data id here
+  # -1 - disabled
+  CustomModelData: -1
+
 Messages:
-  OnlyPlayer: "&cOnly the player can use this command"
   NoPerms: "&cYou do not have permission to use this command"
   PlayerNotFound: '&cThe player you specified was not found or is offline'
   ConfigReloaded: '&aConfig reloaded successfully'

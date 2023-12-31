@@ -31,15 +31,8 @@ public class OreExcavatorCommand implements TabExecutor {
 
         Configuration config = plugin.getConfig();
 
-        if (!(sender instanceof Player)) {
-            ChatUtil.sendColorizedMessage(sender, config.getString("Messages.OnlyPlayer"));
-            return true;
-        }
-
-        Player player = (Player) sender;
-
         if (args.length == 0) {
-            ChatUtil.sendColorizedMessage(player, config.getString("Messages.CommandSyntax"));
+            ChatUtil.sendColorizedMessage(sender, config.getString("Messages.CommandSyntax"));
             return true;
         }
 
@@ -47,8 +40,8 @@ public class OreExcavatorCommand implements TabExecutor {
         switch (subCommand) {
             case "give":
 
-                if (!player.hasPermission("oe.give")) {
-                    ChatUtil.sendColorizedMessage(player, config.getString("Messages.NoPerms"));
+                if (!sender.hasPermission("oe.give")) {
+                    ChatUtil.sendColorizedMessage(sender, config.getString("Messages.NoPerms"));
                     return true;
                 }
 
@@ -56,25 +49,34 @@ public class OreExcavatorCommand implements TabExecutor {
                 if (args.length >= 2) {
                     target = Bukkit.getPlayer(args[1]);
                     if (target == null) {
-                        ChatUtil.sendColorizedMessage(player, config.getString("Messages.PlayerNotFound"));
+                        ChatUtil.sendColorizedMessage(sender, config.getString("Messages.PlayerNotFound"));
                         return true;
                     }
                 }
 
-                Player finalTarget = target != null ? target : player;
-                customBooksGiver.give(finalTarget, OreExcavator.getOreExcavationEnch(), 1,
-                        Collections.singletonList(ChatUtil.colorize(config.getString("General.EnchantmentName"))));
+                if (target == null) {
+                    if (!(sender instanceof Player)) {
+                        ChatUtil.sendColorizedMessage(sender, config.getString("Messages.PlayerNotFound"));
+                        return true;
+                    }
+                    target = (Player) sender;
+                }
+
+                customBooksGiver.give(target, OreExcavator.getOreExcavationEnch(), 1,
+                        Collections.singletonList(ChatUtil.colorize(config.getString("General.EnchantmentName"))),
+                        config.getInt("General.CustomModelData"));
+
                 break;
 
             case "reload":
 
-                if (!player.hasPermission("oe.reload")) {
-                    ChatUtil.sendColorizedMessage(player, config.getString("Messages.NoPerms"));
+                if (!sender.hasPermission("oe.reload")) {
+                    ChatUtil.sendColorizedMessage(sender, config.getString("Messages.NoPerms"));
                     return true;
                 }
 
                 plugin.reload();
-                ChatUtil.sendColorizedMessage(player, config.getString("Messages.ConfigReloaded"));
+                ChatUtil.sendColorizedMessage(sender, config.getString("Messages.ConfigReloaded"));
 
                 break;
         }

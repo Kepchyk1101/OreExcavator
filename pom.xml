@@ -6,7 +6,7 @@
 
     <groupId>me.kepchyk1101</groupId>
     <artifactId>OreExcavator</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>Ore Excavator</name>

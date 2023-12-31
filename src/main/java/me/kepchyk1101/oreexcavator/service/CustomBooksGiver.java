@@ -13,19 +13,22 @@ import java.util.List;
 
 public class CustomBooksGiver {
 
-    public void give(@NotNull Player player, @NotNull Enchantment ench,
-                     int enchLevel, @Nullable List<String> lore) {
+    public void give(@NotNull Player player, @NotNull Enchantment ench, int enchLevel,
+                     @Nullable List<String> lore, int customModelData) {
 
         Validate.notNull(player);
         Validate.notNull(ench);
 
         ItemStack book = new ItemStack(Material.ENCHANTED_BOOK);
         book.addEnchantment(ench, Math.max(enchLevel, 1));
+        ItemMeta bookMeta = book.getItemMeta();
         if (lore != null) {
-            ItemMeta bookMeta = book.getItemMeta();
             bookMeta.setLore(lore);
-            book.setItemMeta(bookMeta);
         }
+        if (customModelData >= 0) {
+            bookMeta.setCustomModelData(customModelData);
+        }
+        book.setItemMeta(bookMeta);
 
         player.getInventory().addItem(book);
 
