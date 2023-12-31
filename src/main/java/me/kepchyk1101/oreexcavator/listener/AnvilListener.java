@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import me.kepchyk1101.oreexcavator.OreExcavator;
+import me.kepchyk1101.oreexcavator.util.ChatUtil;
 import me.kepchyk1101.oreexcavator.util.PickaxeUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -64,7 +65,7 @@ public class AnvilListener implements Listener {
         ItemMeta resultMeta = result.getItemMeta();
         List<String> lore = resultMeta.getLore();
         LinkedList<String> newLore = lore != null ? new LinkedList<>(lore) : new LinkedList<>();
-        newLore.addFirst("§7Ore Excavation");
+        newLore.addFirst(ChatUtil.colorize(plugin.getConfig().getString("General.EnchantmentName")));
         resultMeta.setLore(newLore);
         result.setItemMeta(resultMeta);
 
